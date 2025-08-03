@@ -22,12 +22,13 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ===== HEADER =====
+st.title("Teachers Service Commission Kenya")
 st.title("🏫 TSC Teacher Workload Calculator")
 st.subheader("Senior School Edition")
 st.markdown("""
 <div class="highlight-box">
     <p style="color: #333333;">This tool helps school administrators calculate teacher workload based on student enrollment and subject combinations.</p>
-    <p style="color: #333333;"><strong>Author:</strong> Paul Gabriel | <strong>Guideline:</strong> 27 lessons per teacher per week</p>
+    <p style="color: #333333;"><strong>Guideline:</strong> 27 lessons per teacher per week</p>
 </div>
 """, unsafe_allow_html=True)
 
@@ -241,3 +242,4 @@ st.markdown("""
     <p style="margin: 5px 0 0 0; font-size: 0.8em; color: #333333;">© 2025 Paul Gabriel | All rights reserved</p>
 </div>
 """, unsafe_allow_html=True)
+
