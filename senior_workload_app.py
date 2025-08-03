@@ -57,7 +57,9 @@ DEPARTMENT_DATA = {
     }
 }
 
-TSC_COMBINATIONS = { ... }  # Leave unchanged for brevity
+TSC_COMBINATIONS = {
+    # Add the full dictionary from the original post here
+}
 
 LESSONS_PER_TEACHER = 27
 
@@ -96,7 +98,7 @@ st.success(f"Calculated Streams → F1: {streams['Form 1']}, F2: {streams['Form 
 
 # === COMBINATION SECTION ===
 st.header("📚 Teaching Combinations")
-department = st.selectbox("Select Department", list(set(code[:code.index("0")] for code in TSC_COMBINATIONS)))
+department = st.selectbox("Select Department", ["SCI", "LANG", "MATH", "HUM", "TECH"])
 filtered_combos = {k: v for k, v in TSC_COMBINATIONS.items() if k.startswith(department)}
 combo_display = [f"{code}: {' + '.join(subjects)}" for code, subjects in filtered_combos.items()]
 selected_combo = st.selectbox("Select Combination", combo_display)
