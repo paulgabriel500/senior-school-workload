@@ -58,7 +58,20 @@ DEPARTMENT_DATA = {
 }
 
 TSC_COMBINATIONS = {
-    # Add the full dictionary from the original post here
+    "SCI01": ["Physics", "Chemistry"],
+    "SCI02": ["Biology", "Agriculture"],
+    "SCI03": ["Computer Studies", "Home Science"],
+    "LANG01": ["English", "Kiswahili"],
+    "LANG02": ["English", "French"],
+    "LANG03": ["German", "Arabic"],
+    "MATH01": ["Mathematics", "Physics"],
+    "MATH02": ["Mathematics", "Chemistry"],
+    "HUM01": ["History", "CRE"],
+    "HUM02": ["Geography", "IRE"],
+    "HUM03": ["HRE", "History"],
+    "TECH01": ["Business Studies", "Art & Design"],
+    "TECH02": ["Woodwork", "Metal Work"],
+    "TECH03": ["Electricity", "Computer Studies"],
 }
 
 LESSONS_PER_TEACHER = 27
