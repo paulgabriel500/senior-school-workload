@@ -64,6 +64,7 @@ TSC_COMBINATIONS = {
     "LANG01": ["English", "Kiswahili"],
     "LANG02": ["English", "French"],
     "LANG03": ["German", "Arabic"],
+    "LANG04": ["English", "English Literature"],
     "MATH01": ["Mathematics", "Physics"],
     "MATH02": ["Mathematics", "Chemistry"],
     "HUM01": ["History", "CRE"],
@@ -72,6 +73,9 @@ TSC_COMBINATIONS = {
     "TECH01": ["Business Studies", "Art & Design"],
     "TECH02": ["Woodwork", "Metal Work"],
     "TECH03": ["Electricity", "Computer Studies"],
+    "TECH04": ["Home Science", "Art & Design"],
+    "PE01": ["P.E.", "Music"],
+    "SPED01": ["Special Needs Education", "CRE"]
 }
 
 LESSONS_PER_TEACHER = 27
@@ -95,10 +99,10 @@ def calculate_subject_load(subject, streams):
 # === STUDENT ENROLLMENT ===
 st.header("📋 Student Enrollment")
 col1, col2, col3, col4 = st.columns(4)
-form1 = col1.number_input("Form 1", min_value=0, step=1)
-form2 = col2.number_input("Form 2", min_value=0, step=1)
-form3 = col3.number_input("Form 3", min_value=0, step=1)
-form4 = col4.number_input("Form 4", min_value=0, step=1)
+form1 = col1.number_input("Form 1 Students", min_value=0, step=1)
+form2 = col2.number_input("Form 2 Students", min_value=0, step=1)
+form3 = col3.number_input("Form 3 Students", min_value=0, step=1)
+form4 = col4.number_input("Form 4 Students", min_value=0, step=1)
 
 streams = {
     "Form 1": math.ceil(form1 / 50) if form1 else 0,
@@ -111,14 +115,12 @@ st.success(f"Calculated Streams → F1: {streams['Form 1']}, F2: {streams['Form 
 
 # === COMBINATION SECTION ===
 st.header("📚 Teaching Combinations")
-department = st.selectbox("Select Department", ["SCI", "LANG", "MATH", "HUM", "TECH"])
-filtered_combos = {k: v for k, v in TSC_COMBINATIONS.items() if k.startswith(department)}
-combo_display = [f"{code}: {' + '.join(subjects)}" for code, subjects in filtered_combos.items()]
+combo_display = [f"{code}: {' + '.join(subjects)}" for code, subjects in TSC_COMBINATIONS.items()]
 selected_combo = st.selectbox("Select Combination", combo_display)
 selected_code = selected_combo.split(":")[0]
-subjects = filtered_combos[selected_code]
+subjects = TSC_COMBINATIONS[selected_code]
 
-available_teachers = st.slider("Number of Available Teachers", 0, 20, 5)
+available_teachers = st.number_input("Number of Available Teachers", min_value=0, step=1)
 
 if st.button("🔍 Analyze Workload"):
     subject_loads = {s: calculate_subject_load(s, streams) for s in subjects}
