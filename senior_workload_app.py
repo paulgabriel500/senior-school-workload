@@ -13,10 +13,10 @@ st.markdown("""
     <style>
         .header-style { font-size: 20px; font-weight: bold; color: #2c3e50; margin-top: 20px; }
         .highlight-box { background-color: #f8f9fa; border-radius: 5px; padding: 15px; margin-bottom: 20px; border-left: 4px solid #3498db; }
-        .result-box { background-color: #e8f4fd; border-radius: 5px; padding: 15px; margin: 10px 0; }
+        .result-box { background-color: #e8f4fd; border-radius: 5px; padding: 15px; margin: 10px 0; color: #333333; }
         .subject-table { width: 100%; border-collapse: collapse; }
         .subject-table th { background-color: #3498db; color: white; padding: 10px; text-align: left; }
-        .subject-table td { padding: 8px 10px; border-bottom: 1px solid #ddd; }
+        .subject-table td { padding: 8px 10px; border-bottom: 1px solid #ddd; color: #333333; }
         .subject-table tr:nth-child(even) { background-color: #f2f2f2; }
     </style>
 """, unsafe_allow_html=True)
@@ -25,9 +25,9 @@ st.markdown("""
 st.title("🏫 TSC Teacher Workload Calculator")
 st.subheader("Senior School Edition")
 st.markdown("""
-<div style="background-color: #e8f4fd; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
-    <p>This tool helps school administrators calculate teacher workload based on student enrollment and subject combinations.</p>
-    <p><strong>Author:</strong> Paul Gabriel | <strong>Guideline:</strong> 27 lessons per teacher per week</p>
+<div class="highlight-box">
+    <p style="color: #333333;">This tool helps school administrators calculate teacher workload based on student enrollment and subject combinations.</p>
+    <p style="color: #333333;"><strong>Author:</strong> Paul Gabriel | <strong>Guideline:</strong> 27 lessons per teacher per week</p>
 </div>
 """, unsafe_allow_html=True)
 
@@ -162,10 +162,10 @@ with st.expander("📋 Student Enrollment Information", expanded=True):
     total_students = f1 + f2 + f3 + f4
     st.markdown(f"""
     <div class="highlight-box">
-        <h4>Stream Calculation Summary</h4>
-        <p><strong>Total Students:</strong> {total_students}</p>
-        <p><strong>Stream Capacity:</strong> 50 students per stream</p>
-        <p><strong>Streams:</strong> {sum(streams.values())} (F1: {streams['Form 1']}, F2: {streams['Form 2']}, F3: {streams['Form 3']}, F4: {streams['Form 4']})</p>
+        <h4 style="color: #333333;">Stream Calculation Summary</h4>
+        <p style="color: #333333;"><strong>Total Students:</strong> {total_students}</p>
+        <p style="color: #333333;"><strong>Stream Capacity:</strong> 50 students per stream</p>
+        <p style="color: #333333;"><strong>Streams:</strong> {sum(streams.values())} (F1: {streams['Form 1']}, F2: {streams['Form 2']}, F3: {streams['Form 3']}, F4: {streams['Form 4']})</p>
     </div>
     """, unsafe_allow_html=True)
 
@@ -196,10 +196,10 @@ if st.button("🔍 Analyze Workload", use_container_width=True):
 
     st.markdown(f"""
     <div class="result-box">
-        <h3>Summary for {selected_combo}</h3>
-        <p><strong>Total Weekly Lessons:</strong> {total_load}</p>
-        <p><strong>Required Teachers (27/week):</strong> {required_teachers}</p>
-        <p><strong>Available Teachers:</strong> {available_teachers}</p>
+        <h3 style="color: #333333;">Summary for {selected_combo}</h3>
+        <p style="color: #333333;"><strong>Total Weekly Lessons:</strong> {total_load}</p>
+        <p style="color: #333333;"><strong>Required Teachers (27/week):</strong> {required_teachers}</p>
+        <p style="color: #333333;"><strong>Available Teachers:</strong> {available_teachers}</p>
     </div>
     """, unsafe_allow_html=True)
 
@@ -212,7 +212,7 @@ if st.button("🔍 Analyze Workload", use_container_width=True):
         st.error(f"⚠️ Deficit: {abs(diff)} teacher(s) needed ({abs(diff) * LESSONS_PER_TEACHER} more lessons).")
 
     # Subject breakdown
-    st.markdown("<h4>Subject Breakdown</h4>", unsafe_allow_html=True)
+    st.markdown("<h4 style='color: #333333;'>Subject Breakdown</h4>", unsafe_allow_html=True)
     table = """
     <table class="subject-table">
         <tr><th>Subject</th><th>Department</th><th>Weekly Lessons</th><th>% of Total</th></tr>
@@ -225,8 +225,8 @@ if st.button("🔍 Analyze Workload", use_container_width=True):
 
     st.markdown("""
     <div style="margin-top: 30px;">
-        <h4>Recommendations</h4>
-        <ul>
+        <h4 style="color: #333333;">Recommendations</h4>
+        <ul style="color: #333333;">
             <li>Maximize use of multi-subject teachers</li>
             <li>Optimize timetabling for balance</li>
             <li>Share teachers across departments if qualified</li>
@@ -237,7 +237,7 @@ if st.button("🔍 Analyze Workload", use_container_width=True):
 # ===== FOOTER =====
 st.markdown("""
 <div style="margin-top: 50px; padding: 15px; background-color: #f8f9fa; border-radius: 5px; text-align: center;">
-    <p style="margin: 0; font-size: 0.9em;">TSC Workload Calculator v2.0 | For Official Use Only</p>
-    <p style="margin: 5px 0 0 0; font-size: 0.8em;">© 2025 Paul Gabriel | All rights reserved</p>
+    <p style="margin: 0; font-size: 0.9em; color: #333333;">TSC Workload Calculator v2.0 | For Official Use Only</p>
+    <p style="margin: 5px 0 0 0; font-size: 0.8em; color: #333333;">© 2025 Paul Gabriel | All rights reserved</p>
 </div>
 """, unsafe_allow_html=True)
