@@ -7,16 +7,6 @@ st.set_page_config(
     page_title="TSC Teacher Workload Calculator | Senior School",
     page_icon="🏫"
 )
-# === SCHOOL NAME INPUT ONCE ONLY ===
-if "school_name" not in st.session_state or not st.session_state.school_name:
-    school_name = st.text_input("🏫 Enter the School Name:", placeholder="e.g., Enrio Senior School")
-    if school_name:
-        st.session_state.school_name = school_name
-        st.experimental_rerun()  # Refresh to hide the input
-else:
-    # Display only the name with spacing (no input)
-    st.markdown(f"### 📍 School Name: **{st.session_state.school_name}**")
-    st.write("")  # Adds space
 
 # ===== STYLING =====
 st.markdown("""
@@ -252,6 +242,7 @@ st.markdown("""
     <p style="margin: 5px 0 0 0; font-size: 0.8em; color: #333333;">© 2025 Paul Gabriel | All rights reserved</p>
 </div>
 """, unsafe_allow_html=True)
+
 
 
 
