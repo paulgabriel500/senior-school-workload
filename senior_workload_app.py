@@ -7,6 +7,10 @@ st.set_page_config(
     page_title="TSC Teacher Workload Calculator | Senior School",
     page_icon="🏫"
 )
+# ===== SCHOOL NAME INPUT =====
+school_name = st.text_input("🏫 Enter the School Name:", placeholder="e.g., Enrio Senior School")
+if school_name:
+    st.markdown(f"### 📍 School Name: **{school_name}**")
 
 # ===== STYLING =====
 st.markdown("""
@@ -242,4 +246,5 @@ st.markdown("""
     <p style="margin: 5px 0 0 0; font-size: 0.8em; color: #333333;">© 2025 Paul Gabriel | All rights reserved</p>
 </div>
 """, unsafe_allow_html=True)
+
 
