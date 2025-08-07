@@ -23,6 +23,27 @@ st.markdown("""
 
 # ===== HEADER =====
 st.title("Teachers Service Commission Kenya")
+
+# === SCHOOL NAME: Input Once, Then Display ===
+if "school_name" not in st.session_state:
+    st.session_state.school_name = ""
+
+if "edit_school_name" not in st.session_state:
+    st.session_state.edit_school_name = False
+
+# Handle editing
+if st.session_state.school_name == "" or st.session_state.edit_school_name:
+    school_input = st.text_input("🏫 SCHOOL NAME:", value=st.session_state.school_name, placeholder="e.g., Enrio Senior School")
+    if school_input:
+        st.session_state.school_name = school_input
+        st.session_state.edit_school_name = False
+else:
+    st.markdown(f"### 🏫 SCHOOL NAME: **{st.session_state.school_name}**")
+    st.markdown("&nbsp;", unsafe_allow_html=True)
+    if st.button("✏️ Edit School Name"):
+        st.session_state.edit_school_name = True
+
+# === CONTINUE HEADER ===
 st.title("🏫 TSC Teacher Workload Calculator")
 st.subheader("Senior School Edition")
 st.markdown("""
@@ -242,8 +263,3 @@ st.markdown("""
     <p style="margin: 5px 0 0 0; font-size: 0.8em; color: #333333;">© 2025 Paul Gabriel | All rights reserved</p>
 </div>
 """, unsafe_allow_html=True)
-
-
-
-
-
