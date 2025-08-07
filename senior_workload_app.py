@@ -11,6 +11,9 @@ st.set_page_config(
 # ===== STYLING =====
 st.markdown("""
     <style>
+        body {
+            background-color: #e6f2ff;
+        }
         .header-style { font-size: 20px; font-weight: bold; color: #2c3e50; margin-top: 20px; }
         .highlight-box { background-color: #f8f9fa; border-radius: 5px; padding: 15px; margin-bottom: 20px; border-left: 4px solid #3498db; }
         .result-box { background-color: #e8f4fd; border-radius: 5px; padding: 15px; margin: 10px 0; color: #333333; }
@@ -24,27 +27,27 @@ st.markdown("""
 # ===== HEADER =====
 st.title("Teachers Service Commission Kenya")
 
-# === SCHOOL NAME: Input Once, Then Display ===
+# === SCHOOL NAME SECTION ===
 if "school_name" not in st.session_state:
     st.session_state.school_name = ""
 
 if "edit_school_name" not in st.session_state:
     st.session_state.edit_school_name = False
 
-# Handle editing
-if st.session_state.school_name == "" or st.session_state.edit_school_name:
-    school_input = st.text_input("🏫 SCHOOL NAME:", value=st.session_state.school_name, placeholder="e.g., Enrio Senior School")
-    if school_input:
-        st.session_state.school_name = school_input
-        st.session_state.edit_school_name = False
-else:
-    st.markdown(f"### 🏫 SCHOOL NAME: **{st.session_state.school_name}**")
-    st.markdown("&nbsp;", unsafe_allow_html=True)
-    if st.button("✏️ Edit School Name"):
-        st.session_state.edit_school_name = True
+with st.container():
+    if st.session_state.school_name == "" or st.session_state.edit_school_name:
+        school_input = st.text_input("🏫 SCHOOL NAME:", value=st.session_state.school_name, placeholder="e.g., Enrio Senior School")
+        if school_input:
+            st.session_state.school_name = school_input
+            st.session_state.edit_school_name = False
+    else:
+        st.markdown(f"### 🏫 SCHOOL NAME: **{st.session_state.school_name}**")
+        st.markdown("&nbsp;", unsafe_allow_html=True)
+        if st.button("Edit School Name"):
+            st.session_state.edit_school_name = True
 
 # === CONTINUE HEADER ===
-st.title("🏫 TSC Teacher Workload Calculator")
+st.title(":school: TSC Teacher Workload Calculator")
 st.subheader("Senior School Edition")
 st.markdown("""
 <div class="highlight-box">
@@ -52,6 +55,7 @@ st.markdown("""
     <p style="color: #333333;"><strong>Guideline:</strong> 27 lessons per teacher per week</p>
 </div>
 """, unsafe_allow_html=True)
+
 
 # ===== CONSTANTS =====
 LESSONS_PER_TEACHER = 27
